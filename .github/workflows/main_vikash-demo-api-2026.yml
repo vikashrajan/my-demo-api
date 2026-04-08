@@ -8,7 +8,11 @@ on:
     branches:
       - main
   workflow_dispatch:
-
+- task: UseDotNet@2
+  displayName: 'Use .NET 5 sdk'
+  inputs:
+    packageType: sdk
+    version: '5.0.x'
 jobs:
   build:
     runs-on: ubuntu-latest
