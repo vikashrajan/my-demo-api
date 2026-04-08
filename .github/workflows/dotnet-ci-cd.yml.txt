@@ -1,4 +1,4 @@
-name: Build and Deploy .NET 8 Web API to Azure App Service
+name: Build and Deploy .NET Web API to Azure App Service
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 
 env:
   DOTNET_VERSION: '8.0.x'
-  AZURE_WEBAPP_NAME: 'staticwebsite'
+  AZURE_WEBAPP_NAME: 'vikash-demo-api-2026'
 
 jobs:
   build:
@@ -28,6 +28,9 @@ jobs:
 
       - name: Build application
         run: dotnet build --configuration Release --no-restore
+
+      - name: Run tests
+        run: dotnet test --configuration Release --no-build --verbosity normal
 
       - name: Publish application
         run: dotnet publish -c Release -o ./publish
